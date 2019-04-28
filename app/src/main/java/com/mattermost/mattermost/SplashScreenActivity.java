@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.mattermost.gcm.RegistrationIntentService;
+import com.mattermost.xg.RegistrationIntentService;
 
 import java.io.File;
 

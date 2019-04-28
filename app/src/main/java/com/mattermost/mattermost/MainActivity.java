@@ -6,8 +6,10 @@ package com.mattermost.mattermost;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.WebResourceResponse;
@@ -18,12 +20,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.KeyEvent;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mattermost.model.User;
 import com.mattermost.service.IResultListener;
 import com.mattermost.service.MattermostService;
 import com.mattermost.service.Promise;
 
+import com.tencent.android.tpush.XGPushManager;
+import com.tencent.android.tpush.XGIOperateCallback;
 
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
@@ -36,7 +39,6 @@ public class MainActivity extends WebViewActivity {
     Uri appUri;
 
     String senderID;
-    GoogleCloudMessaging gcm;
     ProgressDialog dialog;
     long timeAway;
 
@@ -44,8 +46,11 @@ public class MainActivity extends WebViewActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(this);
 
         setContentView(R.layout.activity_main);
+        XGPushManager.registerPush(this);
 
         appUri = Uri.parse(service.getBaseUrl());
 

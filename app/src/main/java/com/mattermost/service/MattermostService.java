@@ -147,6 +147,10 @@ public class MattermostService {
         preferences.edit().putString("AttachedId", "" + attached).commit();
     }
 
+    public String GetTeam() {
+        return preferences.getString("Team", "");
+    }
+
     public String GetLastPath() {
         return preferences.getString("LastPath", "");
     }

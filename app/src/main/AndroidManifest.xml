@@ -10,8 +10,6 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
     <!--for Samsung-->
     <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
     <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
@@ -29,11 +27,6 @@
     <!--for solid-->
     <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
 
-    <permission
-        android:name="com.mattermost.mattermost.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-    <uses-permission android:name="com.mattermost.mattermost.permission.C2D_MESSAGE" />
-
     <application
         android:name=".MattermostApplication"
         android:allowBackup="true"
@@ -42,11 +35,6 @@
         android:supportsRtl="true"
         android:hardwareAccelerated="true">
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -54,10 +42,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="gcm_test_app_notification_click_action" />
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
         </activity>
@@ -70,43 +54,22 @@
             android:name=".SelectServerActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" />
-
         <receiver
-            android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <!-- for Gingerbread GSF backward compat -->
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="com.mattermost.mattermost" />
-            </intent-filter>
-        </receiver>
-
-        <receiver
-            android:name="com.mattermost.gcm.NotificationDismissReceiver"
+            android:name="com.mattermost.xg.NotificationDismissReceiver"
             android:exported="false" >
         </receiver>
-
-        <service
-            android:name="com.mattermost.gcm.GcmMessageHandler"
-            android:exported="false">
+        <receiver android:name="com.mattermost.xg.MessageReceiver"
+            android:exported="true" >
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- 接收消息透传 -->
+                <action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE" />
+                <!-- 监听注册、反注册、设置/删除标签、通知被点击等处理结果 -->
+                <action android:name="com.tencent.android.tpush.action.FEEDBACK" />
             </intent-filter>
-        </service>
-
+        </receiver>
         <service
-            android:name="com.mattermost.gcm.RegistrationIntentService"
+            android:name="com.mattermost.xg.RegistrationIntentService"
             android:exported="false">
-        </service>
-
-        <service
-            android:name="com.mattermost.gcm.GcmInstanceIDListener"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID" />
-            </intent-filter>
         </service>
     </application>
 
