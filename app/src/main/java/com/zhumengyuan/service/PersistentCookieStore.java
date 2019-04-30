@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service;
+package com.zhumengyuan.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;

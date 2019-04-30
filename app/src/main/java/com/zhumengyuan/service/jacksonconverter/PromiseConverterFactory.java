@@ -2,10 +2,10 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service.jacksonconverter;
+package com.zhumengyuan.service.jacksonconverter;
 
 import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.mattermost.service.Promise;
+import com.zhumengyuan.service.Promise;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
@@ -13,9 +13,6 @@ import java.lang.reflect.Type;
 
 import retrofit.Call;
 import retrofit.CallAdapter;
-import retrofit.Callback;
-import retrofit.Converter;
-import retrofit.Response;
 import retrofit.Retrofit;
 
 public class PromiseConverterFactory implements CallAdapter.Factory {

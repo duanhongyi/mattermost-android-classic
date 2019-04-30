@@ -2,23 +2,38 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
-
+    signingConfigs {
+        debug {
+            keyAlias 'mattermost'
+            keyPassword '123456'
+            storeFile file('/Volumes/Users/duanhongyi/Source/mattermost-android-classic/mattermost.keystore')
+            storePassword '123456'
+        }
+        release {
+            keyAlias 'mattermost'
+            keyPassword '123456'
+            storeFile file('/Volumes/Users/duanhongyi/Source/mattermost-android-classic/mattermost.keystore')
+            storePassword '123456'
+        }
+    }
     defaultConfig {
         applicationId "com.zhumengyuan.mattermost"
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
         }
+
         manifestPlaceholders = [
-                XG_ACCESS_ID:"2100332971",
-                XG_ACCESS_KEY : "AL5B218D3ZWA",
+                PACKAGE_NAME: "com.zhumengyuan.mattermost",
+                HW_APPID: "100749465",
+                XG_ACCESS_ID:"2100333053",
+                XG_ACCESS_KEY : "AN83F4Y15DZW"
         ]
         minSdkVersion 19
 
         /* If you want to change targetSdkVersion to higher version, please make sure you
          * convert application icon to meet desired lollipop guidelines, that is icon should be
          * flat and white*/
-        targetSdkVersion 20
+        targetSdkVersion 26
         versionCode 399
         versionName "3.10.3"
     }
@@ -36,22 +51,26 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.0.2'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.5.0'
-    implementation  'com.tencent.xinge:xinge:4.0.5-release'
-    implementation'com.tencent.jg:jg:1.1'
-    implementation 'com.tencent.wup:wup:1.0.0.E-Release'
-    implementation 'com.tencent.mid:mid:4.0.7-Release'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:26.0.2'
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.5.0'
     /* If you want to enable unread message badges */
     // compile 'me.leolin:ShortcutBadger:1.1.3@aar'
 
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-    compile(
+    implementation 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    implementation(
             [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
             [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
             [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1']
     )
+    //信鸽
+    implementation 'com.tencent.xinge:xinge:4.3.2-beta'
+    implementation 'com.tencent.wup:wup:1.0.0.E-Release'
+    implementation 'com.tencent.jg:jg:1.1'
+    implementation 'com.tencent.mid:mid:4.0.7-Release'
+    implementation 'com.tencent.xinge:mipush:4.3.2-xiaomi-release'
+    implementation 'com.tencent.xinge:xgmz:4.3.2-meizu-beta'
+    implementation 'com.tencent.xinge:xghw:4.3.2-huawei-beta'
 }

@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service.jacksonconverter;
+package com.zhumengyuan.service.jacksonconverter;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
@@ -20,7 +20,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 import retrofit.Converter;
-import retrofit.Retrofit;
 
 public final class JacksonConverterFactory extends Converter.Factory {
 

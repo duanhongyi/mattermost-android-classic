@@ -2,9 +2,7 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service;
-
-import android.webkit.ValueCallback;
+package com.zhumengyuan.service;
 
 import java.io.IOException;
 import java.net.CookieManager;

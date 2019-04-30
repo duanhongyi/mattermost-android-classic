@@ -1,11 +1,6 @@
-/**
- * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
- * See License.txt for license information.
- */
-package com.mattermost.xg;
+package com.zhumengyuan.xg;
 
-public class RegistrationConstants {
-
+public interface RegistrationConstants {
     public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";
     public static final String REGISTRATION_COMPLETE = "registrationComplete";
     public static final String TOKEN = "token";

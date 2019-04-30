@@ -2,9 +2,9 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service;
+package com.zhumengyuan.service;
 
-import com.mattermost.mattermost.MattermostApplication;
+import com.zhumengyuan.mattermost.MattermostApplication;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;

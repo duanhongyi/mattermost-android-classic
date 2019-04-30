@@ -2,16 +2,13 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.mattermost;
+package com.zhumengyuan.mattermost;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
-import android.webkit.CookieManager;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -20,13 +17,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.KeyEvent;
 
-import com.mattermost.model.User;
-import com.mattermost.service.IResultListener;
-import com.mattermost.service.MattermostService;
-import com.mattermost.service.Promise;
-
-import com.tencent.android.tpush.XGPushManager;
-import com.tencent.android.tpush.XGIOperateCallback;
+import com.zhumengyuan.model.User;
+import com.zhumengyuan.service.IResultListener;
+import com.zhumengyuan.service.MattermostService;
+import com.zhumengyuan.service.Promise;
 
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
@@ -46,11 +40,7 @@ public class MainActivity extends WebViewActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(this);
-
         setContentView(R.layout.activity_main);
-        XGPushManager.registerPush(this);
 
         appUri = Uri.parse(service.getBaseUrl());
 

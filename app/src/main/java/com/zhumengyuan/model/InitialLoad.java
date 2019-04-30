@@ -2,8 +2,8 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service;
+package com.zhumengyuan.model;
 
-public interface IResultListener<T> {
-    void onResult(Promise<T> promise);
+public class InitialLoad {
+    public User user;
 }

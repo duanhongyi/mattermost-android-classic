@@ -2,14 +2,14 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.mattermost;
+package com.zhumengyuan.mattermost;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.mattermost.service.MattermostService;
+import com.zhumengyuan.service.MattermostService;
 
 public class AppActivity extends AppCompatActivity {
 

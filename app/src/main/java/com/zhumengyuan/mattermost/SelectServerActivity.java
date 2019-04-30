@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.mattermost;
+package com.zhumengyuan.mattermost;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +15,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-//import com.mattermost.model.InitialLoad;
-import com.mattermost.model.Ping;
-import com.mattermost.service.IResultListener;
-import com.mattermost.service.MattermostService;
-import com.mattermost.service.Promise;
+//import com.com.zhumengyuan.model.InitialLoad;
+import com.zhumengyuan.model.Ping;
+import com.zhumengyuan.service.IResultListener;
+import com.zhumengyuan.service.MattermostService;
+import com.zhumengyuan.service.Promise;
 
 public class SelectServerActivity extends AppActivity {
 

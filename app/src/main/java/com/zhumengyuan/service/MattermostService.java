@@ -2,30 +2,23 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service;
+package com.zhumengyuan.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
-import com.mattermost.mattermost.R;
-import com.mattermost.model.User;
-import com.mattermost.model.Ping;
-import com.mattermost.model.InitialLoad;
-import com.mattermost.service.jacksonconverter.JacksonConverterFactory;
-import com.mattermost.service.jacksonconverter.PromiseConverterFactory;
+import com.zhumengyuan.mattermost.R;
+import com.zhumengyuan.model.User;
+import com.zhumengyuan.model.Ping;
+import com.zhumengyuan.service.jacksonconverter.JacksonConverterFactory;
+import com.zhumengyuan.service.jacksonconverter.PromiseConverterFactory;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Protocol;
-import com.squareup.okhttp.ResponseBody;
 
-import java.net.CookiePolicy;
-import java.net.CookieStore;
-import java.util.List;
 import java.util.Arrays;
 
-import retrofit.Callback;
 import retrofit.Retrofit;
 import retrofit.http.Headers;
 import retrofit.http.Body;
@@ -128,7 +121,7 @@ public class MattermostService {
     }
 
     public boolean isV4() {
-        return "true".equals(preferences.getString("V4", "false"));
+        return "true".equals(preferences.getString("V4", "true"));
     }
 
     public void SetV4() {

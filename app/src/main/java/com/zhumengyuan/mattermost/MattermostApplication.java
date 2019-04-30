@@ -2,17 +2,20 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.mattermost;
+package com.zhumengyuan.mattermost;
 
 import android.app.Application;
 import android.os.Handler;
 import android.util.Log;
-//import android.webkit.CookieSyncManager;
 
-import com.mattermost.service.MattermostService;
+import com.tencent.android.tpush.XGPushConfig;
+import com.tencent.android.tpush.XGPushManager;
+import com.zhumengyuan.service.MattermostService;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
+//import android.webkit.CookieSyncManager;
 
 public class MattermostApplication extends Application {
 
@@ -27,8 +30,17 @@ public class MattermostApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-  //      CookieSyncManager.createInstance(this);
+        //      CookieSyncManager.createInstance(this);
         MattermostService.service = new MattermostService(this);
+        //xinge push
+        XGPushConfig.enableDebug(this, true);
+        XGPushConfig.enableOtherPush(getApplicationContext(), true);
+        XGPushConfig.setHuaweiDebug(true);
+        XGPushConfig.setMiPushAppId(getApplicationContext(), "2882303761517996365");
+        XGPushConfig.setMiPushAppKey(getApplicationContext(), "5141799624365");
+        XGPushConfig.setMzPushAppId(this, "120303");
+        XGPushConfig.setMzPushAppKey(this, "632b2a967cd3408c98f148bf60dcb01c");
+        XGPushManager.registerPush(this);
 
         handler = new Handler();
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {

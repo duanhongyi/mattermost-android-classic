@@ -2,13 +2,13 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.mattermost;
+package com.zhumengyuan.mattermost;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.mattermost.xg.RegistrationIntentService;
+import com.zhumengyuan.xg.RegistrationIntentService;
 
 import java.io.File;
 
@@ -28,7 +28,6 @@ public class SplashScreenActivity extends AppActivity {
 
     private void onAfterCreate() {
         enableHttpResponseCache();
-
         Intent intent = new Intent(this, RegistrationIntentService.class);
         startService(intent);
 

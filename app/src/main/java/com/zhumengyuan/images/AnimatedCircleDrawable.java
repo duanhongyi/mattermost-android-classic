@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.images;
+package com.zhumengyuan.images;
 
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;

@@ -15,3 +15,19 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-ignorewarning
+-keepattributes *Annotation*
+-keepattributes Exceptions
+-keepattributes InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
+-keep class com.hianalytics.android.**{*;}
+-keep class com.huawei.updatesdk.**{*;}
+-keep class com.huawei.hms.**{*;}
+-keep class com.huawei.android.hms.agent.**{*;}
+
+-keep class com.xiaomi.**{*;}
+-keep public class * extends com.xiaomi.mipush.sdk.PushMessageReceiver
+
+-dontwarn com.meizu.cloud.pushsdk.**
+-keep class com.meizu.cloud.pushsdk.**{*;}

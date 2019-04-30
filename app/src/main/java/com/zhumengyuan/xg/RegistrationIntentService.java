@@ -1,8 +1,4 @@
-/**
- * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
- * See License.txt for license information.
- */
-package com.mattermost.xg;
+package com.zhumengyuan.xg;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -14,8 +10,7 @@ import android.util.Log;
 import com.tencent.android.tpush.XGPushConfig;
 
 public class RegistrationIntentService extends IntentService {
-
-    private static final String TAG = "RegIntentService";
+    private static final String TAG = RegistrationIntentService.class.getName();
 
     public RegistrationIntentService() {
         super(TAG);
@@ -27,8 +22,7 @@ public class RegistrationIntentService extends IntentService {
                 .getDefaultSharedPreferences(this);
         synchronized (TAG) {
             String token = XGPushConfig.getToken(this);
-            Log.d(TAG, "XG registration token: " + token);
-
+            Log.d(TAG, "XGPush registration token: " + token);
             sharedPreferences.edit().putString("device_id", token).apply();
         }
         Intent registrationComplete = new Intent(RegistrationConstants.REGISTRATION_COMPLETE);
