@@ -5,9 +5,12 @@
 package com.zhumengyuan.mattermost;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 import com.zhumengyuan.service.MattermostService;
@@ -22,6 +25,8 @@ public class MattermostApplication extends Application {
     public static MattermostApplication current;
     public static Handler handler;
 
+    private static final String TAG = MattermostApplication.class.getName();
+
     public MattermostApplication() {
         super();
         current = this;
@@ -33,14 +38,7 @@ public class MattermostApplication extends Application {
         //      CookieSyncManager.createInstance(this);
         MattermostService.service = new MattermostService(this);
         //xinge push
-        XGPushConfig.enableDebug(this, true);
-        XGPushConfig.enableOtherPush(getApplicationContext(), true);
-        XGPushConfig.setHuaweiDebug(true);
-        XGPushConfig.setMiPushAppId(getApplicationContext(), "2882303761517996365");
-        XGPushConfig.setMiPushAppKey(getApplicationContext(), "5141799624365");
-        XGPushConfig.setMzPushAppId(this, "120303");
-        XGPushConfig.setMzPushAppKey(this, "632b2a967cd3408c98f148bf60dcb01c");
-        XGPushManager.registerPush(this);
+        registerPush();
 
         handler = new Handler();
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
@@ -81,5 +79,26 @@ public class MattermostApplication extends Application {
 
     public static void logError(Exception ex) {
         Log.e("Error", toString(ex));
+    }
+
+    private void registerPush(){
+        final SharedPreferences sharedPreferences = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        XGPushConfig.enableDebug(this, true);
+        XGPushConfig.enableOtherPush(getApplicationContext(), true);
+        XGPushConfig.setHuaweiDebug(true);
+        XGPushConfig.setMiPushAppId(getApplicationContext(), "2882303761517996365");
+        XGPushConfig.setMiPushAppKey(getApplicationContext(), "5141799624365");
+        XGPushConfig.setMzPushAppId(this, "120303");
+        XGPushConfig.setMzPushAppKey(this, "632b2a967cd3408c98f148bf60dcb01c");
+        XGPushManager.registerPush(this, new XGIOperateCallback() {
+            public void onSuccess(Object token, int code) {
+                Log.i(TAG, "XG register push success with token : " + token);
+                sharedPreferences.edit().putString("device_id", token.toString()).apply();
+            }
+            public void onFail(Object token, int errCode, String msg) {
+                Log.e(TAG, "XG register push failed with token : " + token + ", errCode : " + errCode + " , msg : " + msg);
+            }
+        });
     }
 }

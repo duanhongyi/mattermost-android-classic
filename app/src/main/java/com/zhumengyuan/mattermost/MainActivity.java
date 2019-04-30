@@ -297,10 +297,9 @@ public class MainActivity extends WebViewActivity {
             }
 
             @Override
-            public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
                 // Check to see if we need to attach the device Id
-                if (url.toLowerCase().contains("/channels/")) {
+                if (request.getUrl().toString().toLowerCase().contains("/channels/")) {
                     if (!MattermostService.service.isAttached()) {
                         Log.i("MainActivity", "Attempting to attach device id");
                         MattermostService.service.init(MattermostService.service.getBaseUrl());
@@ -322,12 +321,12 @@ public class MainActivity extends WebViewActivity {
                 }
 
                 // Check if deviceID is missing
-                if (url.toLowerCase().contains("/login")) {
+                if (request.getUrl().toString().toLowerCase().contains("/login")) {
                     MattermostService.service.SetAttached(false);
                 }
 
                 // Check to see if the user was trying to logout
-                if (url.toLowerCase().endsWith("/logout")) {
+                if (request.getUrl().toString().toLowerCase().endsWith("/logout")) {
                     MattermostApplication.handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -336,7 +335,7 @@ public class MainActivity extends WebViewActivity {
                     });
                 }
 
-                return super.shouldInterceptRequest(view, url);
+                return super.shouldInterceptRequest(view, request);
             }
         });
     }

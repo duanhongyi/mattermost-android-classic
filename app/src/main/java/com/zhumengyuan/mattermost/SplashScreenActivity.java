@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.zhumengyuan.xg.RegistrationIntentService;
-
 import java.io.File;
 
 public class SplashScreenActivity extends AppActivity {
@@ -28,11 +26,9 @@ public class SplashScreenActivity extends AppActivity {
 
     private void onAfterCreate() {
         enableHttpResponseCache();
-        Intent intent = new Intent(this, RegistrationIntentService.class);
-        startService(intent);
 
         boolean teamSet = service.getBaseUrl() != null;
-        intent = new Intent(this, teamSet ? MainActivity.class : SelectServerActivity.class);
+        Intent intent = new Intent(this, teamSet ? MainActivity.class : SelectServerActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

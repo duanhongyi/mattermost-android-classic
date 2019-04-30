@@ -28,7 +28,7 @@ android {
                 XG_ACCESS_ID:"2100333053",
                 XG_ACCESS_KEY : "AN83F4Y15DZW"
         ]
-        minSdkVersion 19
+        minSdkVersion 21
 
         /* If you want to change targetSdkVersion to higher version, please make sure you
          * convert application icon to meet desired lollipop guidelines, that is icon should be

@@ -41,7 +41,6 @@ public class MattermostService {
     private MattermostAPI apiClient;
     private SharedPreferences preferences;
     private String baseUrl;
-    private String team = null;
 
     public MattermostService(Context context) {
         this.context = context;
@@ -138,10 +137,6 @@ public class MattermostService {
 
     public void SetAttached(boolean attached) {
         preferences.edit().putString("AttachedId", "" + attached).commit();
-    }
-
-    public String GetTeam() {
-        return preferences.getString("Team", "");
     }
 
     public String GetLastPath() {
